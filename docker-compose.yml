@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu
+    tty: true
+    # debera ponerse en contacto con el creador de esta documentacion el resto de codigo
+    ports:
+      - "8080:8080"
+      - "8070:8069"
+      - "5433:5432"
+    networks:
+      - odoo-network
+    healthcheck:
+      # debera ponerse en contacto con el creador de esta documentacion el resto de codigo
+      start_period: 30s
+
+networks:
+  odoo-network:
+    driver: bridge
